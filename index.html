@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Security Alert</title>
+
+  <style>
+    body{
+      background:black;
+      color:#00ff00;
+      font-family:monospace;
+      padding:20px;
+      overflow:hidden;
+    }
+
+    .warning{
+      color:red;
+      font-size:32px;
+      font-weight:bold;
+      margin-bottom:20px;
+    }
+
+    .log{
+      animation: flicker 0.1s infinite alternate;
+    }
+
+    @keyframes flicker {
+      from { opacity: 0.8; }
+      to { opacity: 1; }
+    }
+
+    .final{
+      display:none;
+      margin-top:40px;
+      color:white;
+      font-size:24px;
+      text-align:center;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="warning">
+⚠️ DEVICE SECURITY BREACH DETECTED ⚠️
+</div>
+
+<div class="log" id="log"></div>
+
+<div class="final" id="final">
+✅ This was Chris Oh Cyber Security Awareness Simulation<br><br>
+Never scan unknown QR codes.
+</div>
+
+<script>
+
+const messages = [
+  "Connecting to device...",
+  "Reading contacts...",
+  "Uploading passwords...",
+  "Accessing camera...",
+  "Downloading photos...",
+  "Bypassing encryption...",
+  "Tracking GPS location..."
+];
+
+let i = 0;
+
+function showMessages() {
+
+  if(i < messages.length){
+    document.getElementById("log").innerHTML +=
+      "> " + messages[i] + "<br>";
+    i++;
+    setTimeout(showMessages, 900);
+  }
+  else{
+    setTimeout(() => {
+      document.getElementById("final").style.display = "block";
+    }, 1500);
+  }
+}
+
+showMessages();
+
+</script>
+
+</body>
+</html>
